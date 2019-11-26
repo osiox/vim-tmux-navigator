@@ -110,6 +110,7 @@ function! s:TmuxAwareNavigate(direction)
     endif
     let args = 'select-pane -t ' . shellescape($TMUX_PANE) . ' -' . tr(a:direction, 'phjkl', 'lLDUR')
     silent call s:TmuxCommand(args)
+    silent call s:TmuxCommand('display-pane')
     if s:NeedsVitalityRedraw()
       redraw!
     endif
